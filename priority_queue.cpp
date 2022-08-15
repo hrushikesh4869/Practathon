@@ -19,11 +19,11 @@ long find_distance(vector<float> &a, vector<float> &b)
 	return dist;
 }
 
+// comparator overloading to give the cutomized comparator to priority_queue which compares strut variables based on the distance.
+
 struct comparedist {
     bool operator()(point const& p1, point const& p2)
     {
-        // return "true" if "p1" is ordered
-        // before "p2", for example:
         return p1.distance > p2.distance;
     }
 };
@@ -34,6 +34,9 @@ int main()
 	ifstream readme("data.txt");
 
 	long i = 0;
+	
+	// Reads the data from the file.
+	
 	cout<<"Readig the data...."<<endl;
 	while(getline(readme,mytext))
 	{
@@ -47,6 +50,9 @@ int main()
 	    i++;
 	}
 	readme.close();
+	
+	// Generates random vector as query.
+	
 	cout<<"Generating the query..."<<endl;
 	vector<float> query;
 	for(int i = 0; i<100; i++)
@@ -54,13 +60,15 @@ int main()
 
 	for(int i = 0; i<100; i++) cout<<query[i]<<",";
 	cout<<endl;
-
+	
 	cout<<"Finding the 10 nearest points......"<<endl;
 
 	auto start = high_resolution_clock::now();
 
 	priority_queue<point,vector<point>,comparedist> pq;
 
+	// index of the point in the array and its distance is pushed in the priority queue.
+	
 	for(long i = 0; i<10000000; i++)
 	{
 		long x = find_distance(query,arr[i]);
