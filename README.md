@@ -7,7 +7,7 @@ File description
 
 Commands to run the code.
 
-g++ generate_data.cpp -o generate_data
-g++ priority_queue.cpp -o priority_queue
+1. g++ generate_data.cpp -o generate_data
+2. g++ priority_queue.cpp -o priority_queue
 
 run time on avg 9 seconds.
